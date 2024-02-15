@@ -9,48 +9,63 @@ class Queue {
   // add item to rear of queue if not full
   // if full throw error
   enqueue(item) {
-
+    if (this.isFull()) {
+      throw new error ("Queue is full")
+    } else {
+      this.queue.push(item)
+    }
   }
 
   // remove item from front of queue and return it
   dequeue() {
-
+    return this.queue.shift()
   }
 
   // return item at front of queue without removing it
   peek() {
+    return this.queue[0];
 
   }
 
   // return true if queue is empty, otherwise false
   isEmpty() {
+    return (this.size() === 0)
 
   }
 
   // return true if queue is full, otherwise false
   isFull() {
+    return (this.size() === this.limit)
 
   }
 
   // return number of items in queue
   size() {
+    return this.queue.length;
 
   }
 
-  // return -1 if item not in queue, otherwise integer representing 
+  // return -1 if item not in queue, otherwise integer representing
   // how far it is from the front
   search(target) {
+    return this.queue.indexOf(target)
 
   }
 
   // print contents of queue: do not return the queue itself!
   print() {
-    
+    console.log(this.queue);
+
   }
 }
 
 if (require.main === module) {
   // add your own tests in here
+  let myQueue = new Queue;
+  myQueue.queue = [1, 2, 3];
+  myQueue.print();
+  myQueue.enqueue(4);
+  myQueue.print();
 }
 
 module.exports = Queue;
